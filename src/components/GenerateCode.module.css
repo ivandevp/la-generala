@@ -1,0 +1,34 @@
+.printable {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media print {
+    .noPrintable {
+        display: none;
+    }
+    /* .printable {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .printable > h2 {
+        display: block;
+        width: 100%;
+    } */
+/* 
+    .printable > div {
+        display: block;
+        width: 30%;
+        margin: 20px;
+    } */
+
+    /* .printable svg {
+        width: 100%;
+    } */
+ }
+ 
