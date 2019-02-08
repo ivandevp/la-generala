@@ -1,0 +1,12 @@
+.container {
+    background-color: #ffe521;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.reader {
+    width: 50vw;
+}

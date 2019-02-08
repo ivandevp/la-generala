@@ -1,5 +1,6 @@
 import React from 'react';
 import QrReader from 'react-qr-scanner'
+import styles from './ScanCode.module.css';
 
 const handleScan = (data) => {
     if (data) {
@@ -13,18 +14,15 @@ const handleError = (err) => {
 };
 
 const ScanCode = () => (
-    <React.Fragment>
+    <div className={styles.container}>
         <QrReader
           delay={100}
-          style={{
-            height: 240,
-            width: 320,
-          }}
+          className={styles.reader}
           onError={handleError}
           onScan={handleScan}
         />
         <p>hola!</p>
-    </React.Fragment>
+    </div>
 );
 
 export default ScanCode;
