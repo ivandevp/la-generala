@@ -7,9 +7,9 @@ import ScanCode from './components/ScanCode';
 
 const App = () => (
   <Router>
-    <ScanCode path="/" />
+    <Dashboard path="/" />
+    <ScanCode path="assistance/:cohortid" />
     <Login path="login" />
-    <Dashboard path="dashboard" />
     <GenerateCode path="generate" />
   </Router>
 );

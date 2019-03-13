@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { navigate } from '@reach/router';
+import UserCohorts from '../components/UserCohorts';
 
 const useStorage = (key = '') => {
     const [value, setValue] = useState('');
@@ -27,17 +28,18 @@ const useStorage = (key = '') => {
 };
 
 const Dashboard = () => {
-    const user = useStorage('user');
+    const { value: user, removeValue: removeUser } = useStorage('user');
 
-    if (typeof user.value !== 'string' && !user.value) {
+    if (typeof user !== 'string' && !user) {
         navigate('login');
         return null;
     }
 
     return (
         <>
-            <h1>Welcome to dashbaord {user.email}</h1>
-            <button onClick={() => user.removeValue()}>
+            <h1>Welcome to dashbaord {user.name}</h1>
+            <UserCohorts cohorts={user.cohorts} />
+            <button onClick={() => removeUser()}>
                 Logout
             </button>
         </>

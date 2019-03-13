@@ -63,8 +63,8 @@ const LoginForm = ({ username, password }) => {
                 if (resp.ok) {
                     return resp.json();
                 }
-                console.log(resp);
-                throw Error(resp.statusText);
+
+                throw new Error(resp.body);
             })
             .then(user => dispatch({
                 type: actionTypes.LOGIN_SUCCESS,
@@ -76,20 +76,23 @@ const LoginForm = ({ username, password }) => {
             }));
     };
 
-    console.log(state);
-
     if (!state.isLoginInProgress && state.loginResult) {
         localStorage.setItem('user', JSON.stringify(state.loginResult.user));
-        navigate('dashboard');
+        navigate('/');
         return null;
     }
 
     return (
-        <form onSubmit={login}>
-            <input type="text" placeholder="Correo electrónico" {...username} />
-            <input type="password" placeholder="Contraseña" {...password} />
-            <button type="submit">Iniciar sesión</button>
-        </form>
+        <>
+            {state.loginError && (
+                <p>{state.loginError.message}</p>
+            )}
+            <form onSubmit={login}>
+                <input type="text" placeholder="Correo electrónico" {...username} />
+                <input type="password" placeholder="Contraseña" {...password} />
+                <button type="submit">Iniciar sesión</button>
+            </form>
+        </>
     );
 };
 
