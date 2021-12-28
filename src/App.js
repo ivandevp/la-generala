@@ -1,18 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Router } from '@reach/router';
-import './App.css';
+import Dashboard from './containers/Dashboard';
 import GenerateCode from './components/GenerateCode';
+import Login from './containers/Login';
 import ScanCode from './components/ScanCode';
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <GenerateCode path="/" />
-        <ScanCode path="scan" />
-      </Router>
-    );
-  }
-}
+const App = () => (
+  <Router>
+    <Dashboard path="/" />
+    <ScanCode path="assistance/:cohortid" />
+    <Login path="login" />
+    <GenerateCode path="generate" />
+  </Router>
+);
 
 export default App;
